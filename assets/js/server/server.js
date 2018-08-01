@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 });
 
 
-app.post('/contacto', function (req, res) {
+export.contacto=app.post('/contacto', function (req, res) {
   console.log('entro a enviar correo');
   envio(req.body.email,"contacto de "+ req.body.nombre,req.body.mensaje);
 
@@ -67,20 +67,6 @@ envio=(correo,titulo,mensaje)=> {
       res.render('contact', {msg:'Email has been sent'});
   });
   }
-
-
-
-  exports.bigben = functions.https.onRequest((req, res) => {
-  const hours = (new Date().getHours() % 12) + 1 // London is UTC + 1hr;
-  res.status(200).send(`<!doctype html>
-    <head>
-      <title>Time</title>
-    </head>
-    <body>
-      ${'BONG '.repeat(hours)}
-    </body>
-  </html>`);
-});
 
   app.listen(5000, function () {
     console.log('Example app listening on port 4000!');
